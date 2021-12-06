@@ -11,22 +11,22 @@
 
 // Package diskstore implements tempStorage interface
 // by using disk as a storage
-package diskstore ;import (_gag "github.com/unidoc/unioffice/common/tempstorage";_a "io/ioutil";_ga "os";_g "strings";);
+package diskstore ;import (_gf "github.com/unidoc/unioffice/common/tempstorage";_g "io/ioutil";_ec "os";_e "strings";);
 
 // SetAsStorage sets temp storage as a disk storage
-func SetAsStorage (){_e :=diskStorage {};_gag .SetAsStorage (&_e )};
-
-// Open opens file from disk according to a path
-func (_gf diskStorage )Open (path string )(_gag .File ,error ){return _ga .Open (path )};
-
-// RemoveAll removes all files in the directory
-func (_d diskStorage )RemoveAll (dir string )error {if _g .HasPrefix (dir ,_ga .TempDir ()){return _ga .RemoveAll (dir );};return nil ;};
+func SetAsStorage (){_eb :=diskStorage {};_gf .SetAsStorage (&_eb )};
 
 // Add is not applicable in the diskstore implementation
-func (_gd diskStorage )Add (path string )error {return nil };type diskStorage struct{};
+func (_f diskStorage )Add (path string )error {return nil };
 
-// TempFile creates a new temp directory by calling ioutil TempDir
-func (_b diskStorage )TempDir (pattern string )(string ,error ){return _a .TempDir ("",pattern )};
+// RemoveAll removes all files in the directory
+func (_eg diskStorage )RemoveAll (dir string )error {if _e .HasPrefix (dir ,_ec .TempDir ()){return _ec .RemoveAll (dir );};return nil ;};
 
 // TempFile creates a new temp file by calling ioutil TempFile
-func (_c diskStorage )TempFile (dir ,pattern string )(_gag .File ,error ){return _a .TempFile (dir ,pattern );};
+func (_cd diskStorage )TempFile (dir ,pattern string )(_gf .File ,error ){return _g .TempFile (dir ,pattern );};
+
+// TempFile creates a new temp directory by calling ioutil TempDir
+func (_b diskStorage )TempDir (pattern string )(string ,error ){return _g .TempDir ("",pattern )};
+
+// Open opens file from disk according to a path
+func (_ed diskStorage )Open (path string )(_gf .File ,error ){return _ec .OpenFile (path ,_ec .O_RDWR ,0644);};type diskStorage struct{};

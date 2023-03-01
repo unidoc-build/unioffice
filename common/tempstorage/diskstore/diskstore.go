@@ -11,22 +11,22 @@
 
 // Package diskstore implements tempStorage interface
 // by using disk as a storage
-package diskstore ;import (_b "github.com/unidoc/unioffice/common/tempstorage";_c "io/ioutil";_ga "os";_f "strings";);
+package diskstore ;import (_a "github.com/unidoc/unioffice/common/tempstorage";_ga "io/ioutil";_f "os";_d "strings";);
 
 // TempFile creates a new temp directory by calling ioutil TempDir
-func (_d diskStorage )TempDir (pattern string )(string ,error ){return _c .TempDir ("",pattern )};
-
-// TempFile creates a new temp file by calling ioutil TempFile
-func (_e diskStorage )TempFile (dir ,pattern string )(_b .File ,error ){return _c .TempFile (dir ,pattern );};
-
-// Open opens file from disk according to a path
-func (_a diskStorage )Open (path string )(_b .File ,error ){return _ga .OpenFile (path ,_ga .O_RDWR ,0644)};
-
-// Add is not applicable in the diskstore implementation
-func (_fe diskStorage )Add (path string )error {return nil };
+func (_fgc diskStorage )TempDir (pattern string )(string ,error ){return _ga .TempDir ("",pattern )};
 
 // SetAsStorage sets temp storage as a disk storage
-func SetAsStorage (){_bd :=diskStorage {};_b .SetAsStorage (&_bd )};
+func SetAsStorage (){_c :=diskStorage {};_a .SetAsStorage (&_c )};
+
+// TempFile creates a new temp file by calling ioutil TempFile
+func (_fg diskStorage )TempFile (dir ,pattern string )(_a .File ,error ){return _ga .TempFile (dir ,pattern );};
+
+// Open opens file from disk according to a path
+func (_b diskStorage )Open (path string )(_a .File ,error ){return _f .OpenFile (path ,_f .O_RDWR ,0644)};
+
+// Add is not applicable in the diskstore implementation
+func (_dd diskStorage )Add (path string )error {return nil };
 
 // RemoveAll removes all files in the directory
-func (_gg diskStorage )RemoveAll (dir string )error {if _f .HasPrefix (dir ,_ga .TempDir ()){return _ga .RemoveAll (dir );};return nil ;};type diskStorage struct{};
+func (_bb diskStorage )RemoveAll (dir string )error {if _d .HasPrefix (dir ,_f .TempDir ()){return _f .RemoveAll (dir );};return nil ;};type diskStorage struct{};

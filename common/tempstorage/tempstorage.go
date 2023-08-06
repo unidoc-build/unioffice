@@ -9,26 +9,26 @@
 // Use of this source code is governed by the UniDoc End User License Agreement
 // terms that can be accessed at https://unidoc.io/eula/
 
-package tempstorage ;import _a "io";type storage interface{Open (_c string )(File ,error );TempFile (_g ,_b string )(File ,error );TempDir (_bc string )(string ,error );RemoveAll (_ac string )error ;Add (_cg string )error ;};
+package tempstorage ;import _c "io";type storage interface{Open (_f string )(File ,error );TempFile (_e ,_fa string )(File ,error );TempDir (_a string )(string ,error );RemoveAll (_b string )error ;Add (_ea string )error ;};var _fd storage ;
+
+// TempDir creates a name for a new temp directory using a pattern argument.
+func TempDir (pattern string )(string ,error ){return _fd .TempDir (pattern )};
 
 // File is a representation of a storage file
 // with Read, Write, Close and Name methods identical to os.File.
-type File interface{_a .Reader ;_a .ReaderAt ;_a .Writer ;_a .Closer ;Name ()string ;};
-
-// Open returns tempstorage File object by name.
-func Open (path string )(File ,error ){return _gb .Open (path )};
+type File interface{_c .Reader ;_c .ReaderAt ;_c .Writer ;_c .Closer ;Name ()string ;};
 
 // RemoveAll removes all files according to the dir argument prefix.
-func RemoveAll (dir string )error {return _gb .RemoveAll (dir )};
+func RemoveAll (dir string )error {return _fd .RemoveAll (dir )};
 
 // TempFile creates new empty file in the storage and returns it.
-func TempFile (dir ,pattern string )(File ,error ){return _gb .TempFile (dir ,pattern )};
-
-// Add reads a file from a disk and adds it to the storage.
-func Add (path string )error {return _gb .Add (path )};var _gb storage ;
-
-// TempDir creates a name for a new temp directory using a pattern argument.
-func TempDir (pattern string )(string ,error ){return _gb .TempDir (pattern )};
+func TempFile (dir ,pattern string )(File ,error ){return _fd .TempFile (dir ,pattern )};
 
 // SetAsStorage changes temporary storage to newStorage.
-func SetAsStorage (newStorage storage ){_gb =newStorage };
+func SetAsStorage (newStorage storage ){_fd =newStorage };
+
+// Open returns tempstorage File object by name.
+func Open (path string )(File ,error ){return _fd .Open (path )};
+
+// Add reads a file from a disk and adds it to the storage.
+func Add (path string )error {return _fd .Add (path )};

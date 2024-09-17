@@ -11,22 +11,22 @@
 
 // Package diskstore implements tempStorage interface
 // by using disk as a storage
-package diskstore ;import (_f "github.com/unidoc/unioffice/common/tempstorage";_eg "io/ioutil";_ga "os";_g "strings";);
-
-// RemoveAll removes all files in the directory
-func (_bg diskStorage )RemoveAll (dir string )error {if _g .HasPrefix (dir ,_ga .TempDir ()){return _ga .RemoveAll (dir );};return nil ;};
-
-// TempFile creates a new temp file by calling ioutil TempFile
-func (_b diskStorage )TempFile (dir ,pattern string )(_f .File ,error ){return _eg .TempFile (dir ,pattern );};
-
-// Add is not applicable in the diskstore implementation
-func (_df diskStorage )Add (path string )error {return nil };
+package diskstore ;import (_e "github.com/unidoc/unioffice/common/tempstorage";_f "io/ioutil";_cb "os";_fc "strings";);
 
 // SetAsStorage sets temp storage as a disk storage
-func SetAsStorage (){_fd :=diskStorage {};_f .SetAsStorage (&_fd )};type diskStorage struct{};
+func SetAsStorage (){_b :=diskStorage {};_e .SetAsStorage (&_b )};
+
+// TempFile creates a new temp file by calling ioutil TempFile
+func (_ff diskStorage )TempFile (dir ,pattern string )(_e .File ,error ){return _f .TempFile (dir ,pattern );};
+
+// RemoveAll removes all files in the directory
+func (_bb diskStorage )RemoveAll (dir string )error {if _fc .HasPrefix (dir ,_cb .TempDir ()){return _cb .RemoveAll (dir );};return nil ;};
 
 // TempFile creates a new temp directory by calling ioutil TempDir
-func (_fc diskStorage )TempDir (pattern string )(string ,error ){return _eg .TempDir ("",pattern )};
+func (_cg diskStorage )TempDir (pattern string )(string ,error ){return _f .TempDir ("",pattern )};type diskStorage struct{};
 
 // Open opens file from disk according to a path
-func (_d diskStorage )Open (path string )(_f .File ,error ){return _ga .OpenFile (path ,_ga .O_RDWR ,0644)};
+func (_a diskStorage )Open (path string )(_e .File ,error ){return _cb .OpenFile (path ,_cb .O_RDWR ,0644)};
+
+// Add is not applicable in the diskstore implementation
+func (_fcg diskStorage )Add (path string )error {return nil };

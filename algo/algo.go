@@ -9,10 +9,10 @@
 // Use of this source code is governed by the UniDoc End User License Agreement
 // terms that can be accessed at https://unidoc.io/eula/
 
-package algo ;import _e "strconv";
+package algo ;import _g "strconv";func _gg (_b byte )bool {return _b >='0'&&_b <='9'};
 
 // NaturalLess compares two strings in a human manner so rId2 sorts less than rId10
-func NaturalLess (lhs ,rhs string )bool {_cea ,_b :=0,0;for _cea < len (lhs )&&_b < len (rhs ){_f :=lhs [_cea ];_gf :=rhs [_b ];_cf :=_g (_f );_ced :=_g (_gf );switch {case _cf &&!_ced :return true ;case !_cf &&_ced :return false ;case !_cf &&!_ced :if _f !=_gf {return _f < _gf ;
-};_cea ++;_b ++;default:_cc :=_cea +1;_bd :=_b +1;for _cc < len (lhs )&&_g (lhs [_cc ]){_cc ++;};for _bd < len (rhs )&&_g (rhs [_bd ]){_bd ++;};_a ,_ :=_e .ParseUint (lhs [_cea :_cc ],10,64);_fd ,_ :=_e .ParseUint (rhs [_cea :_bd ],10,64);if _a !=_fd {return _a < _fd ;
-};_cea =_cc ;_b =_bd ;};};return len (lhs )< len (rhs );};func RepeatString (s string ,cnt int )string {if cnt <=0{return "";};_bdg :=make ([]byte ,len (s )*cnt );_d :=[]byte (s );for _ceac :=0;_ceac < cnt ;_ceac ++{copy (_bdg [_ceac :],_d );};return string (_bdg );
-};func _g (_ce byte )bool {return _ce >='0'&&_ce <='9'};
+func NaturalLess (lhs ,rhs string )bool {_dd ,_e :=0,0;for _dd < len (lhs )&&_e < len (rhs ){_f :=lhs [_dd ];_eg :=rhs [_e ];_bd :=_gg (_f );_ef :=_gg (_eg );switch {case _bd &&!_ef :return true ;case !_bd &&_ef :return false ;case !_bd &&!_ef :if _f !=_eg {return _f < _eg ;
+};_dd ++;_e ++;default:_a :=_dd +1;_ad :=_e +1;for _a < len (lhs )&&_gg (lhs [_a ]){_a ++;};for _ad < len (rhs )&&_gg (rhs [_ad ]){_ad ++;};_fe ,_ :=_g .ParseUint (lhs [_dd :_a ],10,64);_de ,_ :=_g .ParseUint (rhs [_dd :_ad ],10,64);if _fe !=_de {return _fe < _de ;
+};_dd =_a ;_e =_ad ;};};return len (lhs )< len (rhs );};func RepeatString (s string ,cnt int )string {if cnt <=0{return "";};_dc :=make ([]byte ,len (s )*cnt );_ag :=[]byte (s );for _ce :=0;_ce < cnt ;_ce ++{copy (_dc [_ce :],_ag );};return string (_dc );
+};

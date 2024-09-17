@@ -9,128 +9,129 @@
 // Use of this source code is governed by the UniDoc End User License Agreement
 // terms that can be accessed at https://unidoc.io/eula/
 
-package vmldrawing ;import (_e "encoding/xml";_d "fmt";_cg "github.com/unidoc/unioffice";_aa "github.com/unidoc/unioffice/common/logger";_fa "github.com/unidoc/unioffice/schema/soo/ofc/sharedTypes";_cc "github.com/unidoc/unioffice/schema/urn/schemas_microsoft_com/office/excel";
-_ec "github.com/unidoc/unioffice/schema/urn/schemas_microsoft_com/vml";_c "strconv";_f "strings";);func NewContainer ()*Container {return &Container {}};
+package vmldrawing ;import (_ag "encoding/xml";_a "fmt";_fb "github.com/unidoc/unioffice";_cg "github.com/unidoc/unioffice/common/logger";_bd "github.com/unidoc/unioffice/schema/soo/ofc/sharedTypes";_d "github.com/unidoc/unioffice/schema/urn/schemas_microsoft_com/office/excel";
+_ba "github.com/unidoc/unioffice/schema/urn/schemas_microsoft_com/vml";_c "strconv";_f "strings";);
 
-// NewShapeStyle accept value of string style attribute in v:shape and format it to generate ShapeStyle.
-func NewShapeStyle (style string )ShapeStyle {_da :=ShapeStyle {_af :0,_bb :0};_daa :=_f .Split (style ,"\u003b");for _ ,_cdd :=range _daa {_ac :=_f .Split (_cdd ,"\u003a");if len (_ac )!=2{continue ;};var _ebc error ;switch _ac [0]{case "\u0070\u006f\u0073\u0069\u0074\u0069\u006f\u006e":_da ._gg =_ac [1];
-break ;case "\u006d\u0061\u0072\u0067\u0069\u006e\u002d\u0074\u006f\u0070":_da ._cf ,_ebc =_c .ParseFloat (_f .ReplaceAll (_ac [1],"\u0070\u0074",""),64);break ;case "m\u0061\u0072\u0067\u0069\u006e\u002d\u006c\u0065\u0066\u0074":_da ._ed ,_ebc =_c .ParseFloat (_f .ReplaceAll (_ac [1],"\u0070\u0074",""),64);
-break ;case "\u006d\u0061\u0072\u0067\u0069\u006e\u002d\u0062\u006f\u0074\u0074\u006f\u006d":_da ._ad ,_ebc =_c .ParseFloat (_f .ReplaceAll (_ac [1],"\u0070\u0074",""),64);break ;case "\u006d\u0061\u0072g\u0069\u006e\u002d\u0072\u0069\u0067\u0068\u0074":_da ._bdf ,_ebc =_c .ParseFloat (_f .ReplaceAll (_ac [1],"\u0070\u0074",""),64);
-break ;case "\u0074\u006f\u0070":_da ._ccd ,_ebc =_c .ParseFloat (_f .ReplaceAll (_ac [1],"\u0070\u0074",""),64);break ;case "\u006c\u0065\u0066\u0074":_da ._cea ,_ebc =_c .ParseFloat (_f .ReplaceAll (_ac [1],"\u0070\u0074",""),64);break ;case "\u0062\u006f\u0074\u0074\u006f\u006d":_da ._edb ,_ebc =_c .ParseFloat (_f .ReplaceAll (_ac [1],"\u0070\u0074",""),64);
-break ;case "\u0072\u0069\u0067h\u0074":_da ._bdd ,_ebc =_c .ParseFloat (_f .ReplaceAll (_ac [1],"\u0070\u0074",""),64);break ;case "\u0077\u0069\u0064t\u0068":_da ._af ,_ebc =_c .ParseFloat (_f .ReplaceAll (_ac [1],"\u0070\u0074",""),64);break ;case "\u0068\u0065\u0069\u0067\u0068\u0074":_da ._bb ,_ebc =_c .ParseFloat (_f .ReplaceAll (_ac [1],"\u0070\u0074",""),64);
-break ;case "\u007a-\u0069\u006e\u0064\u0065\u0078":_da ._cff ,_ebc =_c .ParseInt (_ac [1],10,64);break ;case "\u006d\u0073\u006f-p\u006f\u0073\u0069\u0074\u0069\u006f\u006e\u002d\u0068\u006f\u0072\u0069\u007a\u006f\u006e\u0074\u0061\u006c":_da ._ceg =_ac [1];
-break ;case "\u006d\u0073\u006f\u002d\u0070\u006f\u0073\u0069\u0074\u0069\u006f\u006e\u002d\u0068\u006fr\u0069z\u006f\u006e\u0074\u0061\u006c\u002d\u0072\u0065\u006c\u0061\u0074\u0069\u0076\u0065":_da ._aed =_ac [1];break ;case "m\u0073\u006f\u002d\u0070os\u0069t\u0069\u006f\u006e\u002d\u0076e\u0072\u0074\u0069\u0063\u0061\u006c":_da ._cdg =_ac [1];
-break ;case "\u006d\u0073\u006f\u002d\u0070\u006f\u0073\u0069\u0074\u0069o\u006e\u002d\u0076\u0065\u0072\u0074\u0069c\u0061\u006c\u002d\u0072\u0065\u006c\u0061\u0074\u0069\u0076\u0065":_da ._eb =_ac [1];break ;};if _ebc !=nil {_aa .Log .Debug ("\u0055n\u0061\u0062l\u0065\u0020\u0074o\u0020\u0070\u0061\u0072\u0073\u0065\u0020s\u0074\u0079\u006c\u0065\u0020\u0061t\u0074\u0072\u0069\u0062\u0075\u0074\u0065\u003a\u0020\u0025\u0073 \u0076\u0061\u006c\u0075\u0065\u003a\u0020\u0025\u0076",_ac [0],_ac [1]);
-};};return _da ;};
-
-// SetFontFamily sets text's fontFamily.
-func (_cdf *TextpathStyle )SetFontFamily (fontFamily string ){_cdf ._fb =fontFamily };
-
-// Height return height of shape.
-func (_cfa *ShapeStyle )Height ()float64 {return _cfa ._bb };
-
-// MSOPositionVerticalRelative get `mso-position-vertical-relative` attribute of shape style.
-func (_ef *ShapeStyle )MSOPositionVerticalRelative ()string {return _ef ._eb };func (_cd *Container )MarshalXML (e *_e .Encoder ,start _e .StartElement )error {start .Attr =append (start .Attr ,_e .Attr {Name :_e .Name {Local :"\u0078m\u006c\u006e\u0073\u003a\u0076"},Value :"\u0075\u0072n\u003a\u0073\u0063\u0068\u0065\u006d\u0061\u0073\u002d\u006d\u0069\u0063\u0072\u006f\u0073\u006f\u0066\u0074\u002d\u0063\u006f\u006d:v\u006d\u006c"});
-start .Attr =append (start .Attr ,_e .Attr {Name :_e .Name {Local :"\u0078m\u006c\u006e\u0073\u003a\u006f"},Value :"\u0075\u0072\u006e\u003a\u0073\u0063\u0068\u0065\u006d\u0061\u0073\u002d\u006di\u0063\u0072\u006f\u0073\u006f\u0066t\u002d\u0063\u006f\u006d\u003a\u006f\u0066\u0066\u0069\u0063\u0065\u003a\u006ff\u0066\u0069\u0063\u0065"});
-start .Attr =append (start .Attr ,_e .Attr {Name :_e .Name {Local :"\u0078m\u006c\u006e\u0073\u003a\u0078"},Value :"\u0075\u0072\u006e\u003a\u0073\u0063\u0068\u0065\u006d\u0061\u0073\u002d\u006d\u0069\u0063\u0072\u006f\u0073\u006f\u0066\u0074\u002d\u0063\u006fm\u003a\u006f\u0066\u0066\u0069c\u0065\u003ae\u0078\u0063\u0065\u006c"});
-start .Name .Local ="\u0078\u006d\u006c";e .EncodeToken (start );if _cd .Layout !=nil {_ce :=_e .StartElement {Name :_e .Name {Local :"\u006f\u003a\u0073\u0068\u0061\u0070\u0065\u006c\u0061\u0079\u006f\u0075\u0074"}};e .EncodeElement (_cd .Layout ,_ce );
-};if _cd .ShapeType !=nil {_bc :=_e .StartElement {Name :_e .Name {Local :"v\u003a\u0073\u0068\u0061\u0070\u0065\u0074\u0079\u0070\u0065"}};e .EncodeElement (_cd .ShapeType ,_bc );};for _ ,_dd :=range _cd .Shape {_aaa :=_e .StartElement {Name :_e .Name {Local :"\u0076:\u0073\u0068\u0061\u0070\u0065"}};
-e .EncodeElement (_dd ,_aaa );};return e .EncodeToken (_e .EndElement {Name :start .Name });};
-
-// CreateFormula creates F element for typeFormulas.
-func CreateFormula (s string )*_ec .CT_F {_gfcf :=_ec .NewCT_F ();_gfcf .EqnAttr =&s ;return _gfcf };
-
-// SetFontSize sets text's fontSize.
-func (_beb *TextpathStyle )SetFontSize (fontSize int64 ){_beb ._dge =fontSize };
-
-// IsItalic returns true if text is italic.
-func (_dce *TextpathStyle )IsItalic ()bool {return _dce ._bee };
-
-// MSOPositionHorizontalRelative get `mso-position-horizontal-relative` attribute of shape style.
-func (_fag *ShapeStyle )MSOPositionHorizontalRelative ()string {return _fag ._aed };
-
-// Width return width of shape.
-func (_acd *ShapeStyle )Width ()float64 {return _acd ._af };const (ShapeStylePositionAbsolute ="\u0061\u0062\u0073\u006f\u006c\u0075\u0074\u0065";ShapeStylePositionRelative ="\u0072\u0065\u006c\u0061\u0074\u0069\u0076\u0065";);
-
-// FontFamily returns fontFamily of the text.
-func (_dcd *TextpathStyle )FontFamily ()string {return _dcd ._fb };
-
-// SetBold sets text to bold.
-func (_fcg *TextpathStyle )SetBold (bold bool ){_fcg ._ecd =bold };type Container struct{Layout *_ec .OfcShapelayout ;ShapeType *_ec .Shapetype ;Shape []*_ec .Shape ;};
-
-// SetItalic sets text to italic.
-func (_ca *TextpathStyle )SetItalic (italic bool ){_ca ._bee =italic };
-
-// Right get right attribute of shape style.
-func (_bgb *ShapeStyle )Right ()float64 {return _bgb ._bdd };
-
-// ShapeStyle is style attribute of v:shape element.
-type ShapeStyle struct{_gg string ;_cf float64 ;_ed float64 ;_ad float64 ;_bdf float64 ;_ccd float64 ;_cea float64 ;_edb float64 ;_bdd float64 ;_af float64 ;_bb float64 ;_cff int64 ;_ceg string ;_aed string ;_cdg string ;_eb string ;};
-
-// Left get left attribute of shape style.
-func (_gcd *ShapeStyle )Left ()float64 {return _gcd ._cea };
+// ToString generate string of TextpathStyle.
+func (_ddc *TextpathStyle )String ()string {_gfg :="";_gfg +=_a .Sprintf ("\u0066o\u006et\u002d\u0066\u0061\u006d\u0069\u006c\u0079\u003a\u0025\u0073\u003b",_ddc ._faba );_gfg +=_a .Sprintf ("\u0066o\u006et\u002d\u0073\u0069\u007a\u0065\u003a\u0025\u0064\u0070\u0074\u003b",_ddc ._dgc );
+if _ddc ._dgf {_gfg +=_a .Sprintf ("\u0066o\u006et\u002d\u0073\u0074\u0079\u006ce\u003a\u0069t\u0061\u006c\u0069\u0063\u003b");};if _ddc ._ada {_gfg +=_a .Sprintf ("\u0066\u006f\u006e\u0074\u002d\u0077\u0065\u0069\u0067\u0068\u0074\u003ab\u006f\u006c\u0064\u003b");
+};return _gfg ;};
 
 // ToString formatting ShapeStyle to string.
-func (_adgb *ShapeStyle )String ()string {_aba :="";_aba +=_d .Sprintf ("\u0070\u006f\u0073i\u0074\u0069\u006f\u006e\u003a\u0025\u0073\u003b",_adgb ._gg );_aba +=_d .Sprintf ("\u006da\u0072g\u0069\u006e\u002d\u006c\u0065\u0066\u0074\u003a\u0025\u0064\u003b",int64 (_adgb ._ed ));
-_aba +=_d .Sprintf ("\u006d\u0061\u0072\u0067\u0069\u006e\u002d\u0074\u006fp\u003a\u0025\u0064\u003b",int64 (_adgb ._cf ));_aba +=_d .Sprintf ("w\u0069\u0064\u0074\u0068\u003a\u0025\u0064\u0070\u0074\u003b",int64 (_adgb ._af ));_aba +=_d .Sprintf ("\u0068\u0065\u0069g\u0068\u0074\u003a\u0025\u0064\u0070\u0074\u003b",int64 (_adgb ._bb ));
-_aba +=_d .Sprintf ("z\u002d\u0069\u006e\u0064\u0065\u0078\u003a\u0025\u0064\u003b",_adgb ._cff );_aba +=_d .Sprintf ("m\u0073\u006f\u002d\u0070\u006f\u0073i\u0074\u0069\u006f\u006e\u002d\u0068\u006f\u0072\u0069z\u006f\u006e\u0074a\u006c:\u0025\u0073\u003b",_adgb ._ceg );
-_aba +=_d .Sprintf ("\u006d\u0073o-\u0070\u006f\u0073i\u0074\u0069\u006f\u006e-ho\u0072iz\u006f\u006e\u0074\u0061\u006c\u002d\u0072el\u0061\u0074\u0069\u0076\u0065\u003a\u0025s\u003b",_adgb ._aed );_aba +=_d .Sprintf ("\u006ds\u006f\u002d\u0070\u006fs\u0069\u0074\u0069\u006f\u006e-\u0076e\u0072t\u0069\u0063\u0061\u006c\u003a\u0025\u0073;",_adgb ._cdg );
-_aba +=_d .Sprintf ("\u006d\u0073\u006f-p\u006f\u0073\u0069\u0074\u0069\u006f\u006e\u002d\u0076e\u0072t\u0069c\u0061l\u002d\u0072\u0065\u006c\u0061\u0074\u0069\u0076\u0065\u003a\u0025\u0073\u003b",_adgb ._eb );return _aba ;};
+func (_efb *ShapeStyle )String ()string {_edf :="";_edf +=_a .Sprintf ("\u0070\u006f\u0073i\u0074\u0069\u006f\u006e\u003a\u0025\u0073\u003b",_efb ._fg );_edf +=_a .Sprintf ("\u006da\u0072g\u0069\u006e\u002d\u006c\u0065\u0066\u0074\u003a\u0025\u0064\u003b",int64 (_efb ._egf ));
+_edf +=_a .Sprintf ("\u006d\u0061\u0072\u0067\u0069\u006e\u002d\u0074\u006fp\u003a\u0025\u0064\u003b",int64 (_efb ._gg ));_edf +=_a .Sprintf ("w\u0069\u0064\u0074\u0068\u003a\u0025\u0064\u0070\u0074\u003b",int64 (_efb ._db ));_edf +=_a .Sprintf ("\u0068\u0065\u0069g\u0068\u0074\u003a\u0025\u0064\u0070\u0074\u003b",int64 (_efb ._aed ));
+_edf +=_a .Sprintf ("z\u002d\u0069\u006e\u0064\u0065\u0078\u003a\u0025\u0064\u003b",_efb ._dbg );_edf +=_a .Sprintf ("m\u0073\u006f\u002d\u0070\u006f\u0073i\u0074\u0069\u006f\u006e\u002d\u0068\u006f\u0072\u0069z\u006f\u006e\u0074a\u006c:\u0025\u0073\u003b",_efb ._dg );
+_edf +=_a .Sprintf ("\u006d\u0073o-\u0070\u006f\u0073i\u0074\u0069\u006f\u006e-ho\u0072iz\u006f\u006e\u0074\u0061\u006c\u002d\u0072el\u0061\u0074\u0069\u0076\u0065\u003a\u0025s\u003b",_efb ._cgg );_edf +=_a .Sprintf ("\u006ds\u006f\u002d\u0070\u006fs\u0069\u0074\u0069\u006f\u006e-\u0076e\u0072t\u0069\u0063\u0061\u006c\u003a\u0025\u0073;",_efb ._eae );
+_edf +=_a .Sprintf ("\u006d\u0073\u006f-p\u006f\u0073\u0069\u0074\u0069\u006f\u006e\u002d\u0076e\u0072t\u0069c\u0061l\u002d\u0072\u0065\u006c\u0061\u0074\u0069\u0076\u0065\u003a\u0025\u0073\u003b",_efb ._gd );return _edf ;};
 
-// NewTextpathStyle accept value of string style attribute of element v:textpath and format it to generate TextpathStyle.
-func NewTextpathStyle (style string )TextpathStyle {_ggd :=TextpathStyle {_fb :"\u0022C\u0061\u006c\u0069\u0062\u0072\u0069\"",_dge :44,_ecd :false ,_bee :false };_dcg :=_f .Split (style ,"\u003b");for _ ,_gd :=range _dcg {_db :=_f .Split (_gd ,"\u003a");
-if len (_db )!=2{continue ;};switch _db [0]{case "f\u006f\u006e\u0074\u002d\u0066\u0061\u006d\u0069\u006c\u0079":_ggd ._fb =_db [1];break ;case "\u0066o\u006e\u0074\u002d\u0073\u0069\u007ae":_ggd ._dge ,_ =_c .ParseInt (_f .ReplaceAll (_db [1],"\u0070\u0074",""),10,64);
-break ;case "f\u006f\u006e\u0074\u002d\u0077\u0065\u0069\u0067\u0068\u0074":_ggd ._ecd =_db [1]=="\u0062\u006f\u006c\u0064";break ;case "\u0066\u006f\u006e\u0074\u002d\u0073\u0074\u0079\u006c\u0065":_ggd ._bee =_db [1]=="\u0069\u0074\u0061\u006c\u0069\u0063";
-break ;};};return _ggd ;};
+// MSOPositionVerticalRelative get `mso-position-vertical-relative` attribute of shape style.
+func (_dge *ShapeStyle )MSOPositionVerticalRelative ()string {return _dge ._gd };
 
-// FontSize returns fontSize of the text.
-func (_gcg *TextpathStyle )FontSize ()int64 {return _gcg ._dge };
+// SetHeight set height of shape.
+func (_fgd *ShapeStyle )SetHeight (height float64 ){_fgd ._aed =height };
 
-// TextpathStyle is style attribute of element v:textpath.
-type TextpathStyle struct{_fb string ;_dge int64 ;_ecd bool ;_bee bool ;};
-
-// Position get position attribute of shape style.
-func (_fd *ShapeStyle )Position ()string {return _fd ._gg };
-
-// Top get top attribute of shape style.
-func (_dga *ShapeStyle )Top ()float64 {return _dga ._ccd };
+// ShapeStyle is style attribute of v:shape element.
+type ShapeStyle struct{_fg string ;_gg float64 ;_egf float64 ;_afb float64 ;_ed float64 ;_dfa float64 ;_dab float64 ;_fa float64 ;_fab float64 ;_db float64 ;_aed float64 ;_dbg int64 ;_dg string ;_cgg string ;_eae string ;_gd string ;};
 
 // NewCommentShape creates a new comment shape for a given cell index.  The
 // indices here are zero based.
-func NewCommentShape (col ,row int64 )*_ec .Shape {_bg :=_ec .NewShape ();_bg .IdAttr =_cg .String (_d .Sprintf ("\u0063\u0073\u005f\u0025\u0064\u005f\u0025\u0064",col ,row ));_bg .TypeAttr =_cg .String ("\u0023\u005f\u00780\u0030\u0030\u0030\u005f\u0074\u0032\u0030\u0032");
-_bg .StyleAttr =_cg .String ("\u0070\u006f\u0073i\u0074\u0069\u006f\u006e\u003a\u0061\u0062\u0073\u006f\u006cu\u0074\u0065\u003b\u006d\u0061\u0072\u0067\u0069\u006e\u002d\u006c\u0065\u0066\u0074:\u0038\u0030\u0070\u0074;\u006d\u0061\u0072\u0067\u0069n-\u0074o\u0070\u003a\u0032pt\u003b\u0077\u0069\u0064\u0074\u0068\u003a1\u0030\u0034\u0070\u0074\u003b\u0068\u0065\u0069\u0067\u0068\u0074\u003a\u0037\u0036\u0070\u0074\u003b\u007a\u002d\u0069\u006e\u0064\u0065x\u003a\u0031\u003bv\u0069\u0073\u0069\u0062\u0069\u006c\u0069t\u0079\u003a\u0068\u0069\u0064\u0064\u0065\u006e");
-_bg .FillcolorAttr =_cg .String ("\u0023f\u0062\u0066\u0036\u0064\u0036");_bg .StrokecolorAttr =_cg .String ("\u0023e\u0064\u0065\u0061\u0061\u0031");_eca :=_ec .NewEG_ShapeElements ();_eca .Fill =_ec .NewFill ();_eca .Fill .Color2Attr =_cg .String ("\u0023f\u0062\u0066\u0065\u0038\u0032");
-_eca .Fill .AngleAttr =_cg .Float64 (-180);_eca .Fill .TypeAttr =_ec .ST_FillTypeGradient ;_eca .Fill .Fill =_ec .NewOfcFill ();_eca .Fill .Fill .ExtAttr =_ec .ST_ExtView ;_eca .Fill .Fill .TypeAttr =_ec .OfcST_FillTypeGradientUnscaled ;_bg .EG_ShapeElements =append (_bg .EG_ShapeElements ,_eca );
-_ecf :=_ec .NewEG_ShapeElements ();_ecf .Shadow =_ec .NewShadow ();_ecf .Shadow .OnAttr =_fa .ST_TrueFalseT ;_ecf .Shadow .ObscuredAttr =_fa .ST_TrueFalseT ;_bg .EG_ShapeElements =append (_bg .EG_ShapeElements ,_ecf );_ee :=_ec .NewEG_ShapeElements ();
-_ee .Path =_ec .NewPath ();_ee .Path .ConnecttypeAttr =_ec .OfcST_ConnectTypeNone ;_bg .EG_ShapeElements =append (_bg .EG_ShapeElements ,_ee );_dg :=_ec .NewEG_ShapeElements ();_dg .Textbox =_ec .NewTextbox ();_dg .Textbox .StyleAttr =_cg .String ("\u006d\u0073\u006f\u002ddi\u0072\u0065\u0063\u0074\u0069\u006f\u006e\u002d\u0061\u006c\u0074\u003a\u0061\u0075t\u006f");
-_bg .EG_ShapeElements =append (_bg .EG_ShapeElements ,_dg );_ab :=_ec .NewEG_ShapeElements ();_ab .ClientData =_cc .NewClientData ();_ab .ClientData .ObjectTypeAttr =_cc .ST_ObjectTypeNote ;_ab .ClientData .MoveWithCells =_fa .ST_TrueFalseBlankT ;_ab .ClientData .SizeWithCells =_fa .ST_TrueFalseBlankT ;
-_ab .ClientData .Anchor =_cg .String ("\u0031,\u0020\u0031\u0035\u002c\u0020\u0030\u002c\u0020\u0032\u002c\u00202\u002c\u0020\u0035\u0034\u002c\u0020\u0035\u002c\u0020\u0033");_ab .ClientData .AutoFill =_fa .ST_TrueFalseBlankFalse ;_ab .ClientData .Row =_cg .Int64 (row );
-_ab .ClientData .Column =_cg .Int64 (col );_bg .EG_ShapeElements =append (_bg .EG_ShapeElements ,_ab );return _bg ;};
+func NewCommentShape (col ,row int64 )*_ba .Shape {_ae :=_ba .NewShape ();_ae .IdAttr =_fb .String (_a .Sprintf ("\u0063\u0073\u005f\u0025\u0064\u005f\u0025\u0064",col ,row ));_ae .TypeAttr =_fb .String ("\u0023\u005f\u00780\u0030\u0030\u0030\u005f\u0074\u0032\u0030\u0032");
+_ae .StyleAttr =_fb .String ("\u0070\u006f\u0073i\u0074\u0069\u006f\u006e\u003a\u0061\u0062\u0073\u006f\u006cu\u0074\u0065\u003b\u006d\u0061\u0072\u0067\u0069\u006e\u002d\u006c\u0065\u0066\u0074:\u0038\u0030\u0070\u0074;\u006d\u0061\u0072\u0067\u0069n-\u0074o\u0070\u003a\u0032pt\u003b\u0077\u0069\u0064\u0074\u0068\u003a1\u0030\u0034\u0070\u0074\u003b\u0068\u0065\u0069\u0067\u0068\u0074\u003a\u0037\u0036\u0070\u0074\u003b\u007a\u002d\u0069\u006e\u0064\u0065x\u003a\u0031\u003bv\u0069\u0073\u0069\u0062\u0069\u006c\u0069t\u0079\u003a\u0068\u0069\u0064\u0064\u0065\u006e");
+_ae .FillcolorAttr =_fb .String ("\u0023f\u0062\u0066\u0036\u0064\u0036");_ae .StrokecolorAttr =_fb .String ("\u0023e\u0064\u0065\u0061\u0061\u0031");_eb :=_ba .NewEG_ShapeElements ();_eb .Fill =_ba .NewFill ();_eb .Fill .Color2Attr =_fb .String ("\u0023f\u0062\u0066\u0065\u0038\u0032");
+_eb .Fill .AngleAttr =_fb .Float64 (-180);_eb .Fill .TypeAttr =_ba .ST_FillTypeGradient ;_eb .Fill .Fill =_ba .NewOfcFill ();_eb .Fill .Fill .ExtAttr =_ba .ST_ExtView ;_eb .Fill .Fill .TypeAttr =_ba .OfcST_FillTypeGradientUnscaled ;_ae .EG_ShapeElements =append (_ae .EG_ShapeElements ,_eb );
+_aa :=_ba .NewEG_ShapeElements ();_aa .Shadow =_ba .NewShadow ();_aa .Shadow .OnAttr =_bd .ST_TrueFalseT ;_aa .Shadow .ObscuredAttr =_bd .ST_TrueFalseT ;_ae .EG_ShapeElements =append (_ae .EG_ShapeElements ,_aa );_ea :=_ba .NewEG_ShapeElements ();_ea .Path =_ba .NewPath ();
+_ea .Path .ConnecttypeAttr =_ba .OfcST_ConnectTypeNone ;_ae .EG_ShapeElements =append (_ae .EG_ShapeElements ,_ea );_eg :=_ba .NewEG_ShapeElements ();_eg .Textbox =_ba .NewTextbox ();_eg .Textbox .StyleAttr =_fb .String ("\u006d\u0073\u006f\u002ddi\u0072\u0065\u0063\u0074\u0069\u006f\u006e\u002d\u0061\u006c\u0074\u003a\u0061\u0075t\u006f");
+_ae .EG_ShapeElements =append (_ae .EG_ShapeElements ,_eg );_aec :=_ba .NewEG_ShapeElements ();_aec .ClientData =_d .NewClientData ();_aec .ClientData .ObjectTypeAttr =_d .ST_ObjectTypeNote ;_aec .ClientData .MoveWithCells =_bd .ST_TrueFalseBlankT ;_aec .ClientData .SizeWithCells =_bd .ST_TrueFalseBlankT ;
+_aec .ClientData .Anchor =_fb .String ("\u0031,\u0020\u0031\u0035\u002c\u0020\u0030\u002c\u0020\u0032\u002c\u00202\u002c\u0020\u0035\u0034\u002c\u0020\u0035\u002c\u0020\u0033");_aec .ClientData .AutoFill =_bd .ST_TrueFalseBlankFalse ;_aec .ClientData .Row =_fb .Int64 (row );
+_aec .ClientData .Column =_fb .Int64 (col );_ae .EG_ShapeElements =append (_ae .EG_ShapeElements ,_aec );return _ae ;};
 
-// Bottom get bottom attribute of shape style.
-func (_dc *ShapeStyle )Bottom ()float64 {return _dc ._edb };
+// Width return width of shape.
+func (_cf *ShapeStyle )Width ()float64 {return _cf ._db };const (ShapeStylePositionAbsolute ="\u0061\u0062\u0073\u006f\u006c\u0075\u0074\u0065";ShapeStylePositionRelative ="\u0072\u0065\u006c\u0061\u0074\u0069\u0076\u0065";);type Container struct{Layout *_ba .OfcShapelayout ;
+ShapeType *_ba .Shapetype ;Shape []*_ba .Shape ;};
 
-// NewCommentDrawing constructs a new comment drawing.
-func NewCommentDrawing ()*Container {_g :=NewContainer ();_g .Layout =_ec .NewOfcShapelayout ();_g .Layout .ExtAttr =_ec .ST_ExtEdit ;_g .Layout .Idmap =_ec .NewOfcCT_IdMap ();_g .Layout .Idmap .DataAttr =_cg .String ("\u0031");_g .Layout .Idmap .ExtAttr =_ec .ST_ExtEdit ;
-_g .ShapeType =_ec .NewShapetype ();_g .ShapeType .IdAttr =_cg .String ("_\u0078\u0030\u0030\u0030\u0030\u005f\u0074\u0032\u0030\u0032");_g .ShapeType .CoordsizeAttr =_cg .String ("2\u0031\u0036\u0030\u0030\u002c\u0032\u0031\u0036\u0030\u0030");_g .ShapeType .SptAttr =_cg .Float32 (202);
-_g .ShapeType .PathAttr =_cg .String ("\u006d\u0030\u002c0l\u0030\u002c\u0032\u0031\u0036\u0030\u0030\u002c\u00321\u00360\u0030,\u00321\u0036\u0030\u0030\u002c\u0032\u0031\u0036\u0030\u0030\u002c\u0030\u0078\u0065");_b :=_ec .NewEG_ShapeElements ();_g .ShapeType .EG_ShapeElements =append (_g .ShapeType .EG_ShapeElements ,_b );
-_b .Path =_ec .NewPath ();_b .Path .GradientshapeokAttr =_fa .ST_TrueFalseT ;_b .Path .ConnecttypeAttr =_ec .OfcST_ConnectTypeRect ;return _g ;};
-
-// SetHeight set height of shape.
-func (_adg *ShapeStyle )SetHeight (height float64 ){_adg ._bb =height };
-
-// ToString generate string of TextpathStyle.
-func (_bag *TextpathStyle )String ()string {_cab :="";_cab +=_d .Sprintf ("\u0066o\u006et\u002d\u0066\u0061\u006d\u0069\u006c\u0079\u003a\u0025\u0073\u003b",_bag ._fb );_cab +=_d .Sprintf ("\u0066o\u006et\u002d\u0073\u0069\u007a\u0065\u003a\u0025\u0064\u0070\u0074\u003b",_bag ._dge );
-if _bag ._bee {_cab +=_d .Sprintf ("\u0066o\u006et\u002d\u0073\u0074\u0079\u006ce\u003a\u0069t\u0061\u006c\u0069\u0063\u003b");};if _bag ._ecd {_cab +=_d .Sprintf ("\u0066\u006f\u006e\u0074\u002d\u0077\u0065\u0069\u0067\u0068\u0074\u003ab\u006f\u006c\u0064\u003b");
-};return _cab ;};
-
-// IsBold returns true if text is bold.
-func (_gcgd *TextpathStyle )IsBold ()bool {return _gcgd ._ecd };func (_df *Container )UnmarshalXML (d *_e .Decoder ,start _e .StartElement )error {_df .Shape =nil ;_bd :for {_gc ,_gf :=d .Token ();if _gf !=nil {return _gf ;};switch _ae :=_gc .(type ){case _e .StartElement :switch _ae .Name .Local {case "s\u0068\u0061\u0070\u0065\u006c\u0061\u0079\u006f\u0075\u0074":_df .Layout =_ec .NewOfcShapelayout ();
-if _ba :=d .DecodeElement (_df .Layout ,&_ae );_ba !=nil {return _ba ;};case "\u0073h\u0061\u0070\u0065\u0074\u0079\u0070e":_df .ShapeType =_ec .NewShapetype ();if _abf :=d .DecodeElement (_df .ShapeType ,&_ae );_abf !=nil {return _abf ;};case "\u0073\u0068\u0061p\u0065":_bca :=_ec .NewShape ();
-if _bge :=d .DecodeElement (_bca ,&_ae );_bge !=nil {return _bge ;};_df .Shape =append (_df .Shape ,_bca );};case _e .EndElement :break _bd ;};};return nil ;};
+// SetItalic sets text to italic.
+func (_aaa *TextpathStyle )SetItalic (italic bool ){_aaa ._dgf =italic };
 
 // SetWidth set width of shape.
-func (_fc *ShapeStyle )SetWidth (width float64 ){_fc ._af =width };
+func (_ad *ShapeStyle )SetWidth (width float64 ){_ad ._db =width };
+
+// MSOPositionHorizontalRelative get `mso-position-horizontal-relative` attribute of shape style.
+func (_aag *ShapeStyle )MSOPositionHorizontalRelative ()string {return _aag ._cgg };
+
+// NewTextpathStyle accept value of string style attribute of element v:textpath and format it to generate TextpathStyle.
+func NewTextpathStyle (style string )TextpathStyle {_adc :=TextpathStyle {_faba :"\u0022C\u0061\u006c\u0069\u0062\u0072\u0069\"",_dgc :44,_ada :false ,_dgf :false };_eab :=_f .Split (style ,"\u003b");for _ ,_ccf :=range _eab {_egc :=_f .Split (_ccf ,"\u003a");
+if len (_egc )!=2{continue ;};switch _egc [0]{case "f\u006f\u006e\u0074\u002d\u0066\u0061\u006d\u0069\u006c\u0079":_adc ._faba =_egc [1];break ;case "\u0066o\u006e\u0074\u002d\u0073\u0069\u007ae":_adc ._dgc ,_ =_c .ParseInt (_f .ReplaceAll (_egc [1],"\u0070\u0074",""),10,64);
+break ;case "f\u006f\u006e\u0074\u002d\u0077\u0065\u0069\u0067\u0068\u0074":_adc ._ada =_egc [1]=="\u0062\u006f\u006c\u0064";break ;case "\u0066\u006f\u006e\u0074\u002d\u0073\u0074\u0079\u006c\u0065":_adc ._dgf =_egc [1]=="\u0069\u0074\u0061\u006c\u0069\u0063";
+break ;};};return _adc ;};func (_g *Container )UnmarshalXML (d *_ag .Decoder ,start _ag .StartElement )error {_g .Shape =nil ;_fc :for {_ebf ,_aae :=d .Token ();if _aae !=nil {return _aae ;};switch _cd :=_ebf .(type ){case _ag .StartElement :switch _cd .Name .Local {case "s\u0068\u0061\u0070\u0065\u006c\u0061\u0079\u006f\u0075\u0074":_g .Layout =_ba .NewOfcShapelayout ();
+if _ac :=d .DecodeElement (_g .Layout ,&_cd );_ac !=nil {return _ac ;};case "\u0073h\u0061\u0070\u0065\u0074\u0079\u0070e":_g .ShapeType =_ba .NewShapetype ();if _da :=d .DecodeElement (_g .ShapeType ,&_cd );_da !=nil {return _da ;};case "\u0073\u0068\u0061p\u0065":_df :=_ba .NewShape ();
+if _fbb :=d .DecodeElement (_df ,&_cd );_fbb !=nil {return _fbb ;};_g .Shape =append (_g .Shape ,_df );};case _ag .EndElement :break _fc ;};};return nil ;};
+
+// SetFontSize sets text's fontSize.
+func (_fcd *TextpathStyle )SetFontSize (fontSize int64 ){_fcd ._dgc =fontSize };
+
+// SetFontFamily sets text's fontFamily.
+func (_abc *TextpathStyle )SetFontFamily (fontFamily string ){_abc ._faba =fontFamily };
+
+// Height return height of shape.
+func (_ef *ShapeStyle )Height ()float64 {return _ef ._aed };
+
+// Right get right attribute of shape style.
+func (_dfga *ShapeStyle )Right ()float64 {return _dfga ._fab };
+
+// Position get position attribute of shape style.
+func (_ffg *ShapeStyle )Position ()string {return _ffg ._fg };
+
+// NewCommentDrawing constructs a new comment drawing.
+func NewCommentDrawing ()*Container {_e :=NewContainer ();_e .Layout =_ba .NewOfcShapelayout ();_e .Layout .ExtAttr =_ba .ST_ExtEdit ;_e .Layout .Idmap =_ba .NewOfcCT_IdMap ();_e .Layout .Idmap .DataAttr =_fb .String ("\u0031");_e .Layout .Idmap .ExtAttr =_ba .ST_ExtEdit ;
+_e .ShapeType =_ba .NewShapetype ();_e .ShapeType .IdAttr =_fb .String ("_\u0078\u0030\u0030\u0030\u0030\u005f\u0074\u0032\u0030\u0032");_e .ShapeType .CoordsizeAttr =_fb .String ("2\u0031\u0036\u0030\u0030\u002c\u0032\u0031\u0036\u0030\u0030");_e .ShapeType .SptAttr =_fb .Float32 (202);
+_e .ShapeType .PathAttr =_fb .String ("\u006d\u0030\u002c0l\u0030\u002c\u0032\u0031\u0036\u0030\u0030\u002c\u00321\u00360\u0030,\u00321\u0036\u0030\u0030\u002c\u0032\u0031\u0036\u0030\u0030\u002c\u0030\u0078\u0065");_ab :=_ba .NewEG_ShapeElements ();_e .ShapeType .EG_ShapeElements =append (_e .ShapeType .EG_ShapeElements ,_ab );
+_ab .Path =_ba .NewPath ();_ab .Path .GradientshapeokAttr =_bd .ST_TrueFalseT ;_ab .Path .ConnecttypeAttr =_ba .OfcST_ConnectTypeRect ;return _e ;};
+
+// NewShapeStyle accept value of string style attribute in v:shape and format it to generate ShapeStyle.
+func NewShapeStyle (style string )ShapeStyle {_ec :=ShapeStyle {_db :0,_aed :0};_ee :=_f .Split (style ,"\u003b");for _ ,_ff :=range _ee {_ce :=_f .Split (_ff ,"\u003a");if len (_ce )!=2{continue ;};var _be error ;switch _ce [0]{case "\u0070\u006f\u0073\u0069\u0074\u0069\u006f\u006e":_ec ._fg =_ce [1];
+break ;case "\u006d\u0061\u0072\u0067\u0069\u006e\u002d\u0074\u006f\u0070":_ec ._gg ,_be =_c .ParseFloat (_f .ReplaceAll (_ce [1],"\u0070\u0074",""),64);break ;case "m\u0061\u0072\u0067\u0069\u006e\u002d\u006c\u0065\u0066\u0074":_ec ._egf ,_be =_c .ParseFloat (_f .ReplaceAll (_ce [1],"\u0070\u0074",""),64);
+break ;case "\u006d\u0061\u0072\u0067\u0069\u006e\u002d\u0062\u006f\u0074\u0074\u006f\u006d":_ec ._afb ,_be =_c .ParseFloat (_f .ReplaceAll (_ce [1],"\u0070\u0074",""),64);break ;case "\u006d\u0061\u0072g\u0069\u006e\u002d\u0072\u0069\u0067\u0068\u0074":_ec ._ed ,_be =_c .ParseFloat (_f .ReplaceAll (_ce [1],"\u0070\u0074",""),64);
+break ;case "\u0074\u006f\u0070":_ec ._dfa ,_be =_c .ParseFloat (_f .ReplaceAll (_ce [1],"\u0070\u0074",""),64);break ;case "\u006c\u0065\u0066\u0074":_ec ._dab ,_be =_c .ParseFloat (_f .ReplaceAll (_ce [1],"\u0070\u0074",""),64);break ;case "\u0062\u006f\u0074\u0074\u006f\u006d":_ec ._fa ,_be =_c .ParseFloat (_f .ReplaceAll (_ce [1],"\u0070\u0074",""),64);
+break ;case "\u0072\u0069\u0067h\u0074":_ec ._fab ,_be =_c .ParseFloat (_f .ReplaceAll (_ce [1],"\u0070\u0074",""),64);break ;case "\u0077\u0069\u0064t\u0068":_ec ._db ,_be =_c .ParseFloat (_f .ReplaceAll (_ce [1],"\u0070\u0074",""),64);break ;case "\u0068\u0065\u0069\u0067\u0068\u0074":_ec ._aed ,_be =_c .ParseFloat (_f .ReplaceAll (_ce [1],"\u0070\u0074",""),64);
+break ;case "\u007a-\u0069\u006e\u0064\u0065\u0078":_ec ._dbg ,_be =_c .ParseInt (_ce [1],10,64);break ;case "\u006d\u0073\u006f-p\u006f\u0073\u0069\u0074\u0069\u006f\u006e\u002d\u0068\u006f\u0072\u0069\u007a\u006f\u006e\u0074\u0061\u006c":_ec ._dg =_ce [1];
+break ;case "\u006d\u0073\u006f\u002d\u0070\u006f\u0073\u0069\u0074\u0069\u006f\u006e\u002d\u0068\u006fr\u0069z\u006f\u006e\u0074\u0061\u006c\u002d\u0072\u0065\u006c\u0061\u0074\u0069\u0076\u0065":_ec ._cgg =_ce [1];break ;case "m\u0073\u006f\u002d\u0070os\u0069t\u0069\u006f\u006e\u002d\u0076e\u0072\u0074\u0069\u0063\u0061\u006c":_ec ._eae =_ce [1];
+break ;case "\u006d\u0073\u006f\u002d\u0070\u006f\u0073\u0069\u0074\u0069o\u006e\u002d\u0076\u0065\u0072\u0074\u0069c\u0061\u006c\u002d\u0072\u0065\u006c\u0061\u0074\u0069\u0076\u0065":_ec ._gd =_ce [1];break ;};if _be !=nil {_cg .Log .Debug ("\u0055n\u0061\u0062l\u0065\u0020\u0074o\u0020\u0070\u0061\u0072\u0073\u0065\u0020s\u0074\u0079\u006c\u0065\u0020\u0061t\u0074\u0072\u0069\u0062\u0075\u0074\u0065\u003a\u0020\u0025\u0073 \u0076\u0061\u006c\u0075\u0065\u003a\u0020\u0025\u0076",_ce [0],_ce [1]);
+};};return _ec ;};
+
+// IsBold returns true if text is bold.
+func (_gf *TextpathStyle )IsBold ()bool {return _gf ._ada };
+
+// CreateFormula creates F element for typeFormulas.
+func CreateFormula (s string )*_ba .CT_F {_ace :=_ba .NewCT_F ();_ace .EqnAttr =&s ;return _ace };func (_de *Container )MarshalXML (e *_ag .Encoder ,start _ag .StartElement )error {start .Attr =append (start .Attr ,_ag .Attr {Name :_ag .Name {Local :"\u0078m\u006c\u006e\u0073\u003a\u0076"},Value :"\u0075\u0072n\u003a\u0073\u0063\u0068\u0065\u006d\u0061\u0073\u002d\u006d\u0069\u0063\u0072\u006f\u0073\u006f\u0066\u0074\u002d\u0063\u006f\u006d:v\u006d\u006c"});
+start .Attr =append (start .Attr ,_ag .Attr {Name :_ag .Name {Local :"\u0078m\u006c\u006e\u0073\u003a\u006f"},Value :"\u0075\u0072\u006e\u003a\u0073\u0063\u0068\u0065\u006d\u0061\u0073\u002d\u006di\u0063\u0072\u006f\u0073\u006f\u0066t\u002d\u0063\u006f\u006d\u003a\u006f\u0066\u0066\u0069\u0063\u0065\u003a\u006ff\u0066\u0069\u0063\u0065"});
+start .Attr =append (start .Attr ,_ag .Attr {Name :_ag .Name {Local :"\u0078m\u006c\u006e\u0073\u003a\u0078"},Value :"\u0075\u0072\u006e\u003a\u0073\u0063\u0068\u0065\u006d\u0061\u0073\u002d\u006d\u0069\u0063\u0072\u006f\u0073\u006f\u0066\u0074\u002d\u0063\u006fm\u003a\u006f\u0066\u0066\u0069c\u0065\u003ae\u0078\u0063\u0065\u006c"});
+start .Name .Local ="\u0078\u006d\u006c";e .EncodeToken (start );if _de .Layout !=nil {_abf :=_ag .StartElement {Name :_ag .Name {Local :"\u006f\u003a\u0073\u0068\u0061\u0070\u0065\u006c\u0061\u0079\u006f\u0075\u0074"}};e .EncodeElement (_de .Layout ,_abf );
+};if _de .ShapeType !=nil {_af :=_ag .StartElement {Name :_ag .Name {Local :"v\u003a\u0073\u0068\u0061\u0070\u0065\u0074\u0079\u0070\u0065"}};e .EncodeElement (_de .ShapeType ,_af );};for _ ,_cc :=range _de .Shape {_dec :=_ag .StartElement {Name :_ag .Name {Local :"\u0076:\u0073\u0068\u0061\u0070\u0065"}};
+e .EncodeElement (_cc ,_dec );};return e .EncodeToken (_ag .EndElement {Name :start .Name });};func NewContainer ()*Container {return &Container {}};
+
+// Left get left attribute of shape style.
+func (_ded *ShapeStyle )Left ()float64 {return _ded ._dab };
+
+// SetBold sets text to bold.
+func (_dag *TextpathStyle )SetBold (bold bool ){_dag ._ada =bold };
+
+// TextpathStyle is style attribute of element v:textpath.
+type TextpathStyle struct{_faba string ;_dgc int64 ;_ada bool ;_dgf bool ;};
+
+// Top get top attribute of shape style.
+func (_eea *ShapeStyle )Top ()float64 {return _eea ._dfa };
+
+// FontSize returns fontSize of the text.
+func (_agc *TextpathStyle )FontSize ()int64 {return _agc ._dgc };
+
+// FontFamily returns fontFamily of the text.
+func (_fgc *TextpathStyle )FontFamily ()string {return _fgc ._faba };
 
 // Margins get margin top, left, bottom, and right of shape style.
-func (_bcd *ShapeStyle )Margins ()(float64 ,float64 ,float64 ,float64 ){return _bcd ._cf ,_bcd ._ed ,_bcd ._ad ,_bcd ._bdf ;};
+func (_ga *ShapeStyle )Margins ()(float64 ,float64 ,float64 ,float64 ){return _ga ._gg ,_ga ._egf ,_ga ._afb ,_ga ._ed ;};
+
+// IsItalic returns true if text is italic.
+func (_bf *TextpathStyle )IsItalic ()bool {return _bf ._dgf };
+
+// Bottom get bottom attribute of shape style.
+func (_dd *ShapeStyle )Bottom ()float64 {return _dd ._fa };
